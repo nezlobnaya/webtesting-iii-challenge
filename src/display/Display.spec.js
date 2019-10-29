@@ -7,7 +7,12 @@ import renderer from 'react-test-renderer'
 
 afterEach(rtl.cleanup)
 
-test.skip('should match the snapshot', () => {
+test('should match the snapshot', () => {
     const tree = renderer.create(<Display />).toJSON()
+    expect(tree).toMatchSnapshot()
+})
+
+test('should default to `unlocked` and `open`', () => {
+    const tree = renderer.create(<Display closed={false} locked={false}/>).toJSON()
     expect(tree).toMatchSnapshot()
 })
