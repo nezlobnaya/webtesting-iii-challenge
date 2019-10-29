@@ -4,6 +4,7 @@ import Controls from './Controls';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer'
+import { fireEvent } from '@testing-library/react'
 
 afterEach(rtl.cleanup)
 
