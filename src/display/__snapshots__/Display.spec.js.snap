@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`a gate should default to \`unlocked\` and \`open\` 1`] = `
+<div
+  className="display panel"
+>
+  <div
+    className="led green-led"
+  >
+    Unlocked
+  </div>
+  <div
+    className="led green-led"
+  >
+    Open
+  </div>
+</div>
+`;
+
 exports[`should default \`unlocked\` and \`open\` 1`] = `
 <div
   className="display panel"

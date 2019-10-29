@@ -13,8 +13,10 @@ describe('<Dashboard />', () => {
         expect(tree).toMatchSnapshot()
     })
     it('shows the display and controls', () => {
-        const { findByText } = rtl.render(<Dashboard />);
-        findByText(/unlocked/ && /open/ && /close gate/ && /lock gate/);
+        const { getByText } = rtl.render(<Dashboard />);
+        getByText(/unlocked/i && /open/i);
+        getByText(/lock gate/i)
+        getByText(/close gate/i)
         });   
 })
 

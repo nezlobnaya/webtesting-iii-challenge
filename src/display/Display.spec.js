@@ -12,7 +12,7 @@ test('should match the snapshot', () => {
     expect(tree).toMatchSnapshot()
 })
 
-test('should default to `unlocked` and `open`', () => {
+test('a gate should default to `unlocked` and `open`', () => {
     const tree = renderer.create(<Display closed={false} locked={false}/>).toJSON()
     expect(tree).toMatchSnapshot()
 })
