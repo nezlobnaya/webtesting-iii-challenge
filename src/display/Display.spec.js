@@ -4,7 +4,8 @@ import Display from './Display';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer'
-import { fireEvent, act } from '@testing-library/react'
+import { fireEvent, act, findByText } from '@testing-library/react'
+
 
 
 afterEach(rtl.cleanup)
@@ -20,16 +21,16 @@ test('a gate should default to `unlocked` and `open`', () => {
 })
 
 describe('Display component', () => {
-    it('displays if gate is open/closed and if it is locked/unlocked', async () => {
-        const { getByText, findByText } = rtl.render(<Display />)
-        // getByText(/open/i && /unlocked/i)
-        act(() => {
-            fireEvent.click(getByText(/open/i))
-        })
-        findByText(/closed/i)
-        act(() => {
-            fireEvent.click(getByText(/unlocked/i))
-        })
-        findByText(/locked/i)
+  
+    it('displays `Closed` and `Locked` if the `closed` and `locked`props are `true`', () => {
+        const { getByText } = rtl.render(<Display closed={true} locked={true}/>)
+        expect(getByText('Locked'))
+        expect(getByText('Closed'))        
     })
+    it('displays `Open` and `Unlocked` if props are false', () => {
+        const { getByText } = rtl.render(<Display closed={false} locked={false}/>)
+        expect(getByText('Unlocked'))
+        expect(getByText('Open')) 
+    })
+
 })
