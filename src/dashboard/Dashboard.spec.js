@@ -12,4 +12,9 @@ describe('<Dashboard />', () => {
         const tree = renderer.create(<Dashboard />).toJSON()
         expect(tree).toMatchSnapshot()
     })
+    it('shows the display and controls', () => {
+        const { findByText } = rtl.render(<Dashboard />);
+        findByText(/unlocked/ && /open/ && /close gate/ && /lock gate/);
+        });   
 })
+

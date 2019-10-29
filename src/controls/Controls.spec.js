@@ -7,7 +7,7 @@ import renderer from 'react-test-renderer'
 
 afterEach(rtl.cleanup)
 
-test('should match the snapshot', () => {
+test.skip('should match the snapshot', () => {
     const tree = renderer.create(<Controls />).toJSON()
     expect(tree).toMatchSnapshot()
 })
