@@ -18,5 +18,6 @@ describe('<Dashboard />', () => {
         getByText(/lock gate/i)
         getByText(/close gate/i)
         });   
+    
 })
 

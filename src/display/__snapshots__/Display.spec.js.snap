@@ -17,40 +17,6 @@ exports[`a gate should default to \`unlocked\` and \`open\` 1`] = `
 </div>
 `;
 
-exports[`should default \`unlocked\` and \`open\` 1`] = `
-<div
-  className="display panel"
->
-  <div
-    className="led green-led"
-  >
-    Unlocked
-  </div>
-  <div
-    className="led green-led"
-  >
-    Open
-  </div>
-</div>
-`;
-
-exports[`should default to \`unlocked\` and \`open\` 1`] = `
-<div
-  className="display panel"
->
-  <div
-    className="led green-led"
-  >
-    Unlocked
-  </div>
-  <div
-    className="led green-led"
-  >
-    Open
-  </div>
-</div>
-`;
-
 exports[`should match the snapshot 1`] = `
 <div
   className="display panel"

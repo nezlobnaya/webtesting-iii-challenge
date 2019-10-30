@@ -4,8 +4,6 @@ import Display from './Display';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer'
-import { fireEvent, act, findByText } from '@testing-library/react'
-
 
 
 afterEach(rtl.cleanup)
@@ -32,5 +30,14 @@ describe('Display component', () => {
         expect(getByText('Unlocked'))
         expect(getByText('Open')) 
     })
-
+    it('when locked or closed use the red-led class', () => {
+        const {container} = rtl.render(<Display locked={true} closed={true} />)
+        const item = container.querySelector('.red-led');
+        expect(item).toBeTruthy();
+    });
+    it('when unlocked or open use the green-led class', () => {
+        const {container} = rtl.render(<Display locked={false} closed={false} />)
+        const item = container.querySelector('.green-led');
+        expect(item).toBeTruthy();
+    });
 })
