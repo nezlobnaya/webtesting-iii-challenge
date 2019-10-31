@@ -19,19 +19,25 @@ test('it provides buttons to toggle the closed and locked states', () => {
     getByText('Close Gate')
 });
 
-test('buttons text changes to reflect the state the door will be in if clicked',  () => {
-    const { getByText, findByText } = rtl.render(<Controls />)
-    const button1 = getByText(/close gate/i)
+test('buttons text changes to reflect the state the door will be in if clicked', async () => {
+    const wrapper = rtl.render(<Controls />)
+    await wrapper.findByText(/close/i)
+    const close = wrapper.getByText(/close/i)
     rtl.act(() => {
-        fireEvent.click(button1)
+        fireEvent.click(close)
     })
-    findByText(/open gate/i)
-    const button2 = getByText('Lock Gate')
+    wrapper.findByText(/open gate/i)
+})
+test('buttons text changes to reflect the state the door will be in if clicked', async () => {
+    const wrapper = rtl.render(<Controls />)
+    await wrapper.findByText(/lock/i)
+    const button2 = wrapper.getByText(/lock/i)
     rtl.act(() => {
         fireEvent.click(button2)
     })
-    findByText(/unlock gate/i)
-});
+    wrapper.findByText(/unlock/i)
+})
+    
 
 test('the closed toggle button is disabled if the gate is locked', () => {
     const {container} = rtl.render(<Controls locked={true}/>)
