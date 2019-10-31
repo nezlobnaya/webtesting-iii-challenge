@@ -14,11 +14,12 @@ describe('<Dashboard />', () => {
     })
     it('shows the display and controls', () => {
         const { getByText } = rtl.render(<Dashboard />);
-        getByText(/unlocked/i)
-        getByText(/open/i)
-        getByText(/lock gate/i)
-        getByText(/close gate/i)
+        expect(getByText(/unlocked/i)).toBeInTheDocument()
+        expect(getByText(/open/i)).toBeInTheDocument()
+        expect(getByText(/lock gate/i)).toBeInTheDocument()
+        expect(getByText(/close gate/i)).toBeInTheDocument()
         });   
+        
      it('closes the door', async () => {
          const wrapper = rtl.render(<Dashboard />)
          await wrapper.findByText(/open/i)

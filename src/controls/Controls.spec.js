@@ -41,12 +41,14 @@ test('buttons text changes to reflect the state the door will be in if clicked',
     
 
 test('the closed toggle button is disabled if the gate is locked', () => {
+    expect.assertions(1)
     const {container} = rtl.render(<Controls locked={true}/>)
     const buttonProps = container.querySelector('button')
     expect(buttonProps.disabled).toBeTruthy();
 });
 
 test('the locked toggle button is disabled if the gate is open', () => {
+    expect.assertions(1)
     const {container} = rtl.render(<Controls closed={false}/>)
     const buttonProps = container.querySelector('button')
     expect(buttonProps).toBeDisabled();
