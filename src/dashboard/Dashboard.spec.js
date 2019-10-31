@@ -14,10 +14,20 @@ describe('<Dashboard />', () => {
     })
     it('shows the display and controls', () => {
         const { getByText } = rtl.render(<Dashboard />);
-        getByText(/unlocked/i && /open/i);
+        getByText(/unlocked/i)
+        getByText(/open/i)
         getByText(/lock gate/i)
         getByText(/close gate/i)
         });   
+     it('closes the door', async () => {
+         const wrapper = rtl.render(<Dashboard />)
+         await wrapper.findByText(/open/i)
+         const close = wrapper.getByText(/close/i)
+         rtl.act(() => {
+             rtl.fireEvent.click(close)
+         })
+         await wrapper.findByText(/closed/i)
+     })   
     
 })
 
