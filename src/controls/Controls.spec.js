@@ -4,7 +4,7 @@ import Controls from './Controls';
 import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, getByRole } from '@testing-library/react'
 
 afterEach(rtl.cleanup)
 
@@ -14,9 +14,11 @@ test('should match the snapshot', () => {
 })
 
 test('it provides buttons to toggle the closed and locked states', () => {
-    const { getByText } = rtl.render(<Controls />);
+    const { queryAllByRole, getByText, getNodeText } = rtl.render(<Controls />);
+    const buttonArray = queryAllByRole('button')
     getByText('Lock Gate')
-    getByText('Close Gate')
+    expect(rtl.getNodeText(buttonArray[0])).toBe('Lock Gate')
+    expect(buttonArray.length).toBe(2)
 });
 
 test('buttons text changes to reflect the state the door will be in if clicked', async () => {
@@ -41,14 +43,12 @@ test('buttons text changes to reflect the state the door will be in if clicked',
     
 
 test('the closed toggle button is disabled if the gate is locked', () => {
-    expect.assertions(1)
     const {container} = rtl.render(<Controls locked={true}/>)
     const buttonProps = container.querySelector('button')
     expect(buttonProps.disabled).toBeTruthy();
 });
 
 test('the locked toggle button is disabled if the gate is open', () => {
-    expect.assertions(1)
     const {container} = rtl.render(<Controls closed={false}/>)
     const buttonProps = container.querySelector('button')
     expect(buttonProps).toBeDisabled();
