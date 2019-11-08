@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 
 const Display = ({ closed, locked }) => {
   const closedClass = `led ${closed ? 'red-led' : 'green-led'}`;
